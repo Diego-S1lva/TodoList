@@ -4,17 +4,20 @@ import mongoose, { Schema } from "mongoose";
 import cors from 'cors';
 import cadastroRouter from './Routes/cadastro.js'
 import usuariosRouter from './Routes/usuarios.js';
-
+import tasks from "./Routes/tasks.js";
+import login from './Routes/login.js';
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
 async function conec() {
-  await mongoose.connect("mongodb://localhost:27017/todolist");
+  await mongoose.connect("mongodb://localhost:27017/");
 }
 
 app.use(cadastroRouter);
 app.use(usuariosRouter);
+app.use(tasks);
+app.use(login);
 
 
 conec();
@@ -36,16 +39,4 @@ mongoose.connection.on("error", function (err) {
 });
 
 
-//schemas para o db
 
-const tarefasSchema = new Schema({
-  title: { type: String, required: true },
-  description: { type: String },
-  done: Boolean,
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
-});
-
-
-
-const Tarefas = mongoose.model("tarefas", tarefasSchema);

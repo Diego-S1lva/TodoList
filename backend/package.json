@@ -14,10 +14,12 @@
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jose": "^6.0.11",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.14.1",
+    "mongoose-id-autoincrement": "^1.0.5",
     "yarn": "^1.22.22"
   },
   "devDependencies": {

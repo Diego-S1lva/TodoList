@@ -1,8 +1,9 @@
 
 import { useState, useEffect } from "react";
 import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
-
 import Cadastro from './Modulos/cadastro.jsx';
+import Tasks from './Modulos/addTasks.jsx';
+import Login from './Modulos/login.jsx';
 function App(props) {
   const [mensagem, setMensagem] = useState("");
   useEffect(() => {
@@ -15,6 +16,8 @@ function App(props) {
   return (
     <BrowserRouter>
     <Routes>
+      <Route path='/login' element={<Login/>}/>
+      <Route path="/tarefas" element={<Tasks/>}/>
       <Route path="/" element={<Navigate to={'/cadastro'}/>}/>
       <Route path="/cadastro" element={<Cadastro />}></Route>
     </Routes>

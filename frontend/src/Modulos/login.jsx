@@ -1,7 +1,6 @@
 import{useRef} from 'react'
 import { useNavigate } from 'react-router-dom'
-function Cadastro(){
-    const nameRef = useRef()
+function Login(){
     const emailRef = useRef()
     const passwordRef = useRef()
     const navigate = useNavigate();
@@ -9,24 +8,23 @@ function Cadastro(){
     async function handleSubmit(event){
         event.preventDefault();
 
-        const nome = nameRef.current.value;
         const email = emailRef.current.value;
         const senha = passwordRef.current.value;
 
         try{
-            const responde = await fetch("http://localhost:3000/usuarios",{
+            const response = await fetch("http://localhost:3000/login",{
                 method: "POST",
                 headers:{
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({nome, email, senha})
+                body: JSON.stringify({email, senha})
             });
-            const resultado = await responde.json();
-             if (responde.ok) {
-                alert("Usuário cadastrado com sucesso!");
-                navigate("/login");
+            const resultado = await response.json();
+            console.log(resultado);
+             if (response.ok) {
+                navigate("/tarefas");
              }else{
-                alert("Erro: "+ resultado.erro);
+                alert("Erro: "+ resultado.error);
              }
         }catch(err){
             console.error("Erro ao enviar dados: ", err);
@@ -35,16 +33,12 @@ function Cadastro(){
     return(
             <div>
                 <form onSubmit={handleSubmit}>
-                    <input ref={nameRef} type='text' placeholder='Nome'></input>
                     <input ref={passwordRef} type='password' placeholder='Senha'></input>
                     <input ref={emailRef} type='email' placeholder='Email'></input>
                     <input type='submit'></input>
                 </form>
-                <p >Já tem conta?
-                    <a href='/login'>Clique aqui</a>
-                </p>
             </div>
     )
 }
 
-export default Cadastro;
+export default Login;
