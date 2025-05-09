@@ -19,10 +19,10 @@ login.post('/login', async (req, res) =>{
         return res.status(400).send({error: "Senha incorreta"})
     }
     else{
-    const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 30000});
+    const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+    console.log("Token gerado:", token);
     user.senha = undefined;
-    return res.status(201).json({mesagem: "Usuário criado"});
-    res.send({user, token})
+    return res.status(201).send({user, token});
     
     }}
     catch(err){

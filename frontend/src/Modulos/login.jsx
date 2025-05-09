@@ -10,18 +10,20 @@ function Login(){
 
         const email = emailRef.current.value;
         const senha = passwordRef.current.value;
-
         try{
             const response = await fetch("http://localhost:3000/login",{
                 method: "POST",
                 headers:{
                     "Content-Type": "application/json"
+                    
                 },
                 body: JSON.stringify({email, senha})
             });
             const resultado = await response.json();
             console.log(resultado);
              if (response.ok) {
+                localStorage.setItem("token", resultado.token);
+                console.log("Token armazenado:", resultado.token);
                 navigate("/tarefas");
              }else{
                 alert("Erro: "+ resultado.error);
