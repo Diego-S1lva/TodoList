@@ -1,5 +1,7 @@
 import{useRef} from 'react'
 import { useNavigate } from 'react-router-dom'
+import '../styles/styleLogin.css';
+
 function Login(){
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -33,11 +35,22 @@ function Login(){
         }
     }
     return(
-            <div>
+            <div className='container'>
                 <form onSubmit={handleSubmit}>
-                    <input ref={passwordRef} type='password' placeholder='Senha'></input>
-                    <input ref={emailRef} type='email' placeholder='Email'></input>
-                    <input type='submit'></input>
+                    <header className='login'>
+                        <h1>Login</h1>
+                        <article>
+                            <label className='email'>
+                                Digite seu email <br/>
+                            <input ref={emailRef} type='email' placeholder='Email'></input>
+                            </label>
+                            <label className='password'>
+                                Digite sua senha <br/>
+                            <input ref={passwordRef} type='password' placeholder='Senha'></input>
+                            </label>
+                            <input type='submit'></input>
+                        </article>
+                    </header>
                 </form>
             </div>
     )

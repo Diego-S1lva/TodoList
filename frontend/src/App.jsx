@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 import Cadastro from './Modulos/cadastro.jsx';
-import Tasks from './Modulos/addTasks.jsx';
+import Tasks from './Modulos/tasks.jsx';
 import Login from './Modulos/login.jsx';
 function App(props) {
   const [mensagem, setMensagem] = useState("");

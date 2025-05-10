@@ -1,0 +1,35 @@
+
+.container1{
+    display: grid;
+    justify-items: center;
+    background-color: darkcyan;
+    margin-top: 150px;
+    margin: 150px auto;
+    margin-right: 500px;
+    margin-left: 500px;
+    margin-bottom: 500px;
+    color: white;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    padding-top: 50px;
+    padding-bottom: 250px;
+    text-align: center;
+    flex-direction: column;
+}
+
+.concluida {
+  text-decoration: line-through;
+  color: yellowgreen;
+}
+
+.addtask{
+    display: flex;
+    margin-bottom: 26px;    
+}
+
+.title,
+.description,
+.done{
+    display:flex;
+    margin-bottom: 26px;
+    
+}

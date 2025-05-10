@@ -20,7 +20,6 @@ login.post('/login', async (req, res) =>{
     }
     else{
     const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: '1h'});
-    console.log("Token gerado:", token);
     user.senha = undefined;
     return res.status(201).send({user, token});
     

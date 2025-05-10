@@ -6,6 +6,7 @@ import cadastroRouter from './Routes/cadastro.js'
 import usuariosRouter from './Routes/usuarios.js';
 import tasks from "./Routes/tasks.js";
 import login from './Routes/login.js';
+import auth from './Routes/authMiddleWare.js';
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());

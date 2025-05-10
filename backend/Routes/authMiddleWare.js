@@ -1,8 +1,11 @@
 import jwt from 'jsonwebtoken';
 
 function auth(req, res, next){
-    const token = req.headers.authorization.split(' ')[1]
-    console.log("Token recebido:", token);
+    const auth = req.headers.authorization;
+    if (!auth) {
+        return res.status(401).send({ error: 'Token não fornecido' });
+    }
+    const token = auth.split(' ')[1];
 
     if (!token) {
         return res.status(401).send({error: 'Token não fornecido'});

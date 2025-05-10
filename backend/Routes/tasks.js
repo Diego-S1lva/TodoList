@@ -4,17 +4,17 @@ import authMiddleware from './authMiddleWare.js';
 const tasks = express.Router();
 
 tasks.post('/tarefas', authMiddleware,async (req, res) =>{
-try{
-  const{title, description, done, createdAt,updatedAt }  = req.body
+  try{
+    const{title, description, done, createdAt,updatedAt }  = req.body
 
-  const newTasks = new tasksSchema({
-    userId: req.userId,
-    title, description, done, createdAt, updatedAt});
+    const newTasks = new tasksSchema({
+      userId: req.userId,
+      title, description, done, createdAt, updatedAt});
 
-  const saveTasks = await newTasks.save();
+    const saveTasks = await newTasks.save();
 
-  res.status(201).json({mesagem: "Tarefa adicionada"});
-}catch(err){
+    res.status(201).json(saveTasks);
+} catch(err){
     res.status(500).json({erro: err.message});
 }
 })

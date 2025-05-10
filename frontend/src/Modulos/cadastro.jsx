@@ -1,5 +1,6 @@
 import{useRef} from 'react'
 import { useNavigate } from 'react-router-dom'
+import  '../styles/styleCadastro.css';
 function Cadastro(){
     const nameRef = useRef()
     const emailRef = useRef()
@@ -33,14 +34,28 @@ function Cadastro(){
         }
     }
     return(
-            <div>
+            <div className='container'>
                 <form onSubmit={handleSubmit}>
-                    <input ref={nameRef} type='text' placeholder='Nome'></input>
-                    <input ref={passwordRef} type='password' placeholder='Senha'></input>
-                    <input ref={emailRef} type='email' placeholder='Email'></input>
-                    <input type='submit'></input>
+                    <header className='header'>
+                        <h1>Cadastro</h1>
+                        <article>
+                            <label className='nome'>
+                                Digite seu nome: <br/>
+                                <input ref={nameRef}  type='text' placeholder='Nome'/>
+                            </label>
+                            <label className='email'>
+                                Digite seu email: <br/>
+                                <input ref={emailRef} type='email' placeholder='Email'/> 
+                            </label>
+                            <label className= 'password'>
+                                Digite sua senha: <br/>
+                                <input ref={passwordRef} type='password' placeholder='Senha'/><br/>
+                                <input className='Enviar'type='submit'></input>
+                            </label>
+                        </article>
+                    </header>
                 </form>
-                <p >Já tem conta?
+                <p className='forlogin'>Já tem conta?
                     <a href='/login'>Clique aqui</a>
                 </p>
             </div>
